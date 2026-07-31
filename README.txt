@@ -1,20 +1,19 @@
-FIVE-YEAR PLAN BUILDER — REVISED STABLE PROTOTYPE
+FIVE-YEAR PLAN BUILDER — DESIGNED EXPORT EDITION
 
 OPENING THE APP
-1. Unzip the folder.
-2. Open index.html in Chrome or Microsoft Edge.
+1. Keep all five files together in the same folder.
+2. Open index.html in Chrome or Microsoft Edge, or upload all files to the root of your GitHub Pages repository.
 3. Student answers save automatically in that browser.
 
-THIS VERSION INCLUDES
-- The original stable prototype structure and navigation.
-- A progress bar at both the top and bottom of every step.
-- Personal and social goals at the beginning, including pets, travel, relationships, marriage, children, friends, instruments, languages, hobbies, health, volunteering, confidence, and independence.
-- The selected personal goals return on the final page for a five-year check-in.
-- Optional headshot, dream picture, career picture, and one picture for each year.
-- All five required yearly pages with education, employment, money, living, transportation, challenge, solution, and a personal-goal section.
-- Compact Workbook and Presentation PDF layouts.
-- Download options for PDF, Word (.docx), viewable HTML, plain text, and saved answers.
-- Browser spelling support in every text box. Right-click an underlined word to see suggested corrections.
+NEW DESIGNED EXPORTS
+- The PDF/print version now uses a colorful workbook-style layout with section banners, icons, journey cards, shaded answer cards, page accents, and stronger theme styling.
+- The Word (.docx) version now uses structured Word tables, colored banners, shaded cards, preserved image proportions, and intentional page breaks so it resembles the PDF design.
+- Professional, Colorful, and Vision Board themes now affect much more of both finished formats.
+- The cover includes the student name, large expected graduation year, headshot, journey overview, and personal-goals preview.
+- Each year has its own designed page.
 
-NOTE ABOUT WORD DOWNLOADS
-The Word document is generated inside the browser. It is editable in Microsoft Word and can also be uploaded to Google Drive and opened in Google Docs.
+GITHUB UPDATE
+Replace the existing index.html, styles.css, app.js, jszip.min.js, and README.txt files in the repository. Commit the replacements. The existing GitHub Pages link will update automatically.
+
+PDF NOTE
+Use Print / Save PDF from the final review page. In the browser print window, turn off Headers and Footers and turn on Background Graphics for the best result.

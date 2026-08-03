@@ -21,7 +21,7 @@ main{padding:24px;max-width:1220px;width:100%;margin:auto}.top{display:flex;just
 .themes{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.theme input{position:absolute;opacity:0}.theme label{display:block;border:2px solid var(--line);border-radius:11px;padding:13px;text-align:center}.theme input:checked+label{border-color:var(--a);background:var(--p)}
 .uploads{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.upload{border:1px solid var(--line);border-radius:11px;padding:12px}.upload img{max-width:100%;max-height:150px;border-radius:9px;margin-top:9px}
 .flash{display:none;background:#eaf7ed;border:1px solid #b8ddc0;color:#245f30;border-radius:9px;padding:9px;margin-bottom:13px}
-body.blue{--a:#2563b5;--p:#eaf2ff}body.green{--a:#2f7c4b;--p:#e9f7ee}body.purple{--a:#7653b5;--p:#f1ecfb}body.orange{--a:#e87524;--p:#fff0e4}
+body.blue{--a:#2563b5;--p:#eaf2ff}body.green{--a:#2f7c4b;--p:#e9f7ee}body.purple{--a:#7653b5;--p:#f1ecfb}body.orange{--a:#e87524;--p:#fff0e4}body.teal{--a:#147d82;--p:#e7f7f7}body.pink{--a:#c4457d;--p:#fdebf3}body.red{--a:#b83a3a;--p:#fdecec}body.navy{--a:#243f73;--p:#eaf0fb}body.gold{--a:#a66b00;--p:#fff4d6}body.coral{--a:#d85f57;--p:#fff0ee}
 @media(max-width:900px){.app{grid-template-columns:1fr}.side{position:static;height:auto}nav{grid-template-columns:1fr 1fr}.top{align-items:flex-start;flex-direction:column}.prog{width:100%}.choices,.grid2,.grid3,.review,.themes,.uploads{grid-template-columns:1fr 1fr}.trow{grid-template-columns:1fr}}
 @media(max-width:560px){nav,.choices,.grid2,.grid3,.review,.themes,.uploads{grid-template-columns:1fr}main{padding:12px}.card{padding:18px}}
 @media print{.side,.top,.actions,.no-print{display:none!important}.app{display:block}main{padding:0;max-width:none}.card{box-shadow:none;border:0}.print-page{page-break-after:always;min-height:9in;padding:.4in}}
@@ -86,7 +86,7 @@ strengthChallenges:[],strengthChallengesOther:"",careerChallenges:[],careerChall
 trainingChallenges:[],trainingChallengesOther:"",livingChallenges:[],livingChallengesOther:"",
 transportChallenges:[],transportChallengesOther:"",moneyChallenges:[],moneyChallengesOther:"",
 independentChallenges:[],independentChallengesOther:"",supportChallenges:[],supportChallengesOther:"",
-timeline:{},yearWriting:["","","","",""],theme:"orange",decoration:"clean",images:{headshot:"",dream:"",career:"",year1:"",year2:"",year3:"",year4:"",year5:""}};
+timeline:{},yearWriting:["","","","",""],theme:"orange",images:{headshot:"",dream:"",career:"",year1:"",year2:"",year3:"",year4:"",year5:""}};
 let S;try{S=Object.assign(structuredClone(D),JSON.parse(localStorage.getItem(STORE)||"{}"));S.images=Object.assign({},D.images,S.images||{});S.timeline=S.timeline||{};S.yearWriting=[0,1,2,3,4].map(i=>(S.yearWriting||[])[i]||"")}catch(e){S=structuredClone(D)}let cur=Number(localStorage.getItem(STORE+"Step")||0); if(cur<0||cur>=steps.length)cur=0;
 const $=q=>document.querySelector(q),$$=q=>[...document.querySelectorAll(q)],esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
 function save(){localStorage.setItem(STORE,JSON.stringify(S));localStorage.setItem(STORE+"Step",cur)}
@@ -135,7 +135,7 @@ if(i===6)return `<div class="intro"><h3>Here is what you selected.</h3><p>Your c
 
 if(i===7)return `<div class="intro"><h3>Use the ideas above each box to write your plan in your own words.</h3><p>The keywords help you remember what you chose.</p></div>${[1,2,3,4,5].map(yearPlan).join("")}`;
 
-if(i===8)return `<div class="intro"><h3>Make your finished plan feel like yours.</h3><p>Choose a theme, add optional pictures, and download a polished copy.</p></div><div class="section"><div class="st">Color Theme</div><div class="themes">${["orange","blue","green","purple"].map(t=>`<div class="theme"><input id="t${t}" type="radio" name="theme" value="${t}" ${S.theme===t?"checked":""}><label for="t${t}">${t[0].toUpperCase()+t.slice(1)}</label></div>`).join("")}</div></div><div class="section"><div class="st">Decoration Style</div><div class="themes">${["clean","stars","path","confetti"].map(t=>`<div class="theme"><input id="d${t}" type="radio" name="dec" value="${t}" ${S.decoration===t?"checked":""}><label for="d${t}">${t[0].toUpperCase()+t.slice(1)}</label></div>`).join("")}</div></div><div class="section"><div class="st">Pictures</div><div class="uploads">${upload("headshot","Student photo")}${upload("dream","Dream picture")}${upload("career","Career picture")}${[1,2,3,4,5].map(y=>upload("year"+y,"Year "+y+" picture")).join("")}</div></div><div class="section"><button class="btn primary" id="print">Print / Save PDF</button> <button class="btn secondary" id="docx">Download Word DOCX</button> <button class="btn secondary" id="html">Download Finished HTML</button> <button class="btn secondary" id="data">Download Saved Answers</button></div><p class="hint">Avoid entering confidential student information while testing on a public GitHub site.</p>`;
+if(i===8)return `<div class="intro"><h3>Make your finished plan feel like yours.</h3><p>Choose a color theme, add optional pictures, and download a polished copy.</p></div><div class="section"><div class="st">Color Theme</div><p class="hint">Your selected color will appear in headings and accents in the website, PDF, finished HTML, and Word document.</p><div class="themes">${["orange","blue","green","purple","teal","pink","red","navy","gold","coral"].map(t=>`<div class="theme"><input id="t${t}" type="radio" name="theme" value="${t}" ${S.theme===t?"checked":""}><label for="t${t}" style="border-top:10px solid ${({orange:'#e87524',blue:'#2563b5',green:'#2f7c4b',purple:'#7653b5',teal:'#147d82',pink:'#c4457d',red:'#b83a3a',navy:'#243f73',gold:'#a66b00',coral:'#d85f57'})[t]}">${t[0].toUpperCase()+t.slice(1)}</label></div>`).join("")}</div></div><div class="section"><div class="st">Pictures</div><div class="uploads">${upload("headshot","Student photo")}${upload("dream","Dream picture")}${upload("career","Career picture")}${[1,2,3,4,5].map(y=>upload("year"+y,"Year "+y+" picture")).join("")}</div></div><div class="section"><button class="btn primary" id="print">Print / Save PDF</button> <button class="btn secondary" id="docx">Download Word DOCX</button> <button class="btn secondary" id="html">Download Finished HTML</button> <button class="btn secondary" id="data">Download Saved Answers</button></div><p class="hint">Avoid entering confidential student information while testing on a public GitHub site.</p>`;
 
 return `<p>Page not found.</p>`;
 }
@@ -211,28 +211,21 @@ return `<div class="yplan"><h3>Year ${y} — ${Number(S.gradYear||new Date().get
 }
 function upload(k,l){return `<div class="upload"><strong>${esc(l)}</strong><input type="file" accept="image/*" data-image="${k}">${S.images[k]?`<img src="${S.images[k]}" alt="${esc(l)}"><button type="button" class="chip" data-remove="${k}">Remove</button>`:""}</div>`}
 function bind(){$$("[data-step]").forEach(b=>b.onclick=()=>{const target=+b.dataset.step;if(target===8&&!allWritingValid()){flash("Complete all five My Plan paragraphs before continuing.");cur=7;save();render();return}cur=target;save();render()});$$("[data-field]").forEach(x=>x.oninput=()=>{S[x.dataset.field]=x.value;save()});$$("[data-array]").forEach(x=>x.onchange=()=>{let p=x.dataset.array,v=$$(`[data-array="${CSS.escape(p)}"]:checked`).map(z=>z.value);if(p==="strengths"&&v.length>5){x.checked=false;flash("Please choose no more than five strengths.");v=$$(`[data-array="${CSS.escape(p)}"]:checked`).map(z=>z.value)}S[p]=v;save()});$$("[data-fill]").forEach(b=>b.onclick=()=>{S[b.dataset.fill]=b.dataset.text;save();render()});$$("[data-time]").forEach(x=>x.onchange=()=>{let id=x.dataset.time;S.timeline[id]=$$(`[data-time="${CSS.escape(id)}"]:checked`).map(z=>+z.value);save()});$$("[data-write]").forEach(x=>x.oninput=()=>{S.yearWriting[+x.dataset.write]=x.value;save();updateWritingGate()});
-$$("[data-starter]").forEach(b=>b.onclick=()=>{const i=+b.dataset.starter;const starter=b.dataset.text;const existing=(S.yearWriting[i]||"").trimEnd();S.yearWriting[i]=existing?existing+"\n\n"+starter:starter;save();render();setTimeout(()=>{const box=document.querySelector(`[data-write="${i}"]`);if(box){box.focus();box.selectionStart=box.selectionEnd=box.value.length}},0)});$$('input[name="theme"]').forEach(x=>x.onchange=()=>{S.theme=x.value;save();render()});$$('input[name="dec"]').forEach(x=>x.onchange=()=>{S.decoration=x.value;save()});$$("[data-image]").forEach(x=>x.onchange=e=>{let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{S.images[x.dataset.image]=r.result;save();render()};r.readAsDataURL(f)});$$("[data-remove]").forEach(b=>b.onclick=()=>{S.images[b.dataset.remove]="";save();render()});if($("#startHome"))$("#startHome").onclick=()=>{cur=1;save();render()};if($("#print"))$("#print").onclick=printPlan;if($("#docx"))$("#docx").onclick=downloadDocx;if($("#html"))$("#html").onclick=downloadPlan;if($("#data"))$("#data").onclick=()=>blob(JSON.stringify(S,null,2),"application/json",base()+"_saved_answers.json");updateWritingGate()}
+$$("[data-starter]").forEach(b=>b.onclick=()=>{const i=+b.dataset.starter;const starter=b.dataset.text;const existing=(S.yearWriting[i]||"").trimEnd();S.yearWriting[i]=existing?existing+"\n\n"+starter:starter;save();render();setTimeout(()=>{const box=document.querySelector(`[data-write="${i}"]`);if(box){box.focus();box.selectionStart=box.selectionEnd=box.value.length}},0)});$$('input[name="theme"]').forEach(x=>x.onchange=()=>{S.theme=x.value;save();render()});$$("[data-image]").forEach(x=>x.onchange=e=>{let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{S.images[x.dataset.image]=r.result;save();render()};r.readAsDataURL(f)});$$("[data-remove]").forEach(b=>b.onclick=()=>{S.images[b.dataset.remove]="";save();render()});if($("#startHome"))$("#startHome").onclick=()=>{cur=1;save();render()};if($("#print"))$("#print").onclick=printPlan;if($("#docx"))$("#docx").onclick=downloadDocx;if($("#html"))$("#html").onclick=downloadPlan;if($("#data"))$("#data").onclick=()=>blob(JSON.stringify(S,null,2),"application/json",base()+"_saved_answers.json");updateWritingGate()}
 $("#back").onclick=()=>{if(cur>0){cur--;save();render()}};$("#next").onclick=()=>{if(cur===7&&!allWritingValid()){flash("Each year needs at least 400 characters and 5 sentences.");updateWritingGate();return}if(cur<steps.length-1){cur++;save();render()}else flash("Your progress is saved.")};$("#reset").onclick=()=>{if(confirm("Clear all answers and start over?")){S=structuredClone(D);cur=0;localStorage.removeItem(STORE);render()}};
 function themeHex(){
-const colors={orange:"E87524",blue:"2563B5",green:"2F7C4B",purple:"7653B5"};
+const colors={orange:"E87524",blue:"2563B5",green:"2F7C4B",purple:"7653B5",teal:"147D82",pink:"C4457D",red:"B83A3A",navy:"243F73",gold:"A66B00",coral:"D85F57"};
 return colors[S.theme]||colors.orange
 }
 function themeCss(){return "#"+themeHex()}
-function deco(){return S.decoration==="stars"?"★ ✦ ★ ✧ ★ ✦ ★":S.decoration==="path"?"● ─── ● ─── ● ─── ●":S.decoration==="confetti"?"◆  ●  ▲  ✦  ■  ●  ◆":""}
-function decorationHtml(position="top"){
-if(S.decoration==="clean")return "";
-const label=S.decoration==="stars"?"Stars":S.decoration==="path"?"Path":"Confetti";
-const extra=S.decoration==="confetti"?"letter-spacing:12px":S.decoration==="path"?"letter-spacing:3px":"letter-spacing:8px";
-return `<div aria-label="${label} decoration" style="text-align:center;color:${themeCss()};font-size:${position==="cover"?30:22}px;font-weight:800;${extra};margin:${position==="bottom"?"24px 0 0":"0 0 22px"};line-height:1.5">${deco()}</div>`
-}
 function img(k){return S.images[k]?`<img src="${S.images[k]}" style="max-width:220px;max-height:180px;border-radius:14px">`:""}
 function finished(){
 const c=themeCss();
-return `<section class="print-page" style="text-align:center;display:flex;flex-direction:column;justify-content:center;align-items:center">${decorationHtml("cover")}<h1 style="font-size:42px;margin-bottom:18px;color:${c}">My Five-Year Plan</h1><h2 style="font-size:31px;margin:8px 0;color:${c}">${esc(S.studentName||"Student Name")}</h2><p style="font-size:20px">Expected graduation year: ${esc(S.gradYear)}</p>${img("headshot")}</section>
-<section class="print-page">${decorationHtml()}<h1 style="font-size:36px;color:${c}">My Personal Goals</h1><p style="font-size:22px;line-height:1.7">${esc(all(S.personalGoals,S.personalOther).join(" • ")||"Not selected")}</p><h2 style="color:${c}">Why These Goals Matter to Me</h2><p style="white-space:pre-wrap;line-height:1.65">${esc(S.personalWhy||"Not written yet.")}</p></section>
-<section class="print-page">${decorationHtml()}<h1 style="color:${c}">My Strengths & Growth</h1><h2 style="color:${c}">My Strengths</h2><p>${esc(all(S.strengths,S.strengthsOther).join(" • ")||"Not selected")}</p><h2 style="color:${c}">Areas I Want to Improve</h2><p>${esc(all(S.growth,S.growthOther).join(" • ")||"Not selected")}</p><h2 style="color:${c}">Career / Education Goals</h2><p>${esc(all(S.vision,S.visionOther).join(" • ")||"Not selected")}</p></section>
-<section class="print-page">${decorationHtml()}<h1 style="color:${c}">Career & Training</h1>${img("career")}<h2 style="color:${c}">Career Areas</h2><p>${esc(all(S.careerAreas,S.careerAreasOther).join(" • ")||"Not selected")}</p><h2 style="color:${c}">Specific Job or Career</h2><p>${esc(S.careerChoice||"Not selected")}</p><h2 style="color:${c}">Education or Training</h2><p>${esc(all(S.training,S.trainingOther).join(" • ")||"Not selected")}</p></section>
-${[1,2,3,4,5].map(y=>`<section class="print-page">${decorationHtml()}<h1 style="color:${c}">Year ${y} — ${Number(S.gradYear||new Date().getFullYear())+y-1}</h1>${img("year"+y)}<h2 style="color:${c}">My Ideas</h2><p>${esc(yearGoals(y).map(x=>x.text).join(" • ")||"No ideas assigned.")}</p><h2 style="color:#B36B00">Challenges I May Face</h2><p style="color:#8A5600">${esc(yearChallenges(y).map(x=>x.text).join(" • ")||"No challenges assigned.")}</p><h2 style="color:${c}">My Plan</h2><p style="white-space:pre-wrap;line-height:1.65">${esc(S.yearWriting[y-1]||"Not written yet.")}</p></section>`).join("")}`
+return `<section class="print-page" style="text-align:center;display:flex;flex-direction:column;justify-content:center;align-items:center"><h1 style="font-size:42px;margin-bottom:18px;color:${c}">My Five-Year Plan</h1><h2 style="font-size:31px;margin:8px 0;color:${c}">${esc(S.studentName||"Student Name")}</h2><p style="font-size:20px">Expected graduation year: ${esc(S.gradYear)}</p>${img("headshot")}</section>
+<section class="print-page"><h1 style="font-size:36px;color:${c}">My Personal Goals</h1><p style="font-size:22px;line-height:1.7">${esc(all(S.personalGoals,S.personalOther).join(" • ")||"Not selected")}</p><h2 style="color:${c}">Why These Goals Matter to Me</h2><p style="white-space:pre-wrap;line-height:1.65">${esc(S.personalWhy||"Not written yet.")}</p></section>
+<section class="print-page"><h1 style="color:${c}">My Strengths & Growth</h1><h2 style="color:${c}">My Strengths</h2><p>${esc(all(S.strengths,S.strengthsOther).join(" • ")||"Not selected")}</p><h2 style="color:${c}">Areas I Want to Improve</h2><p>${esc(all(S.growth,S.growthOther).join(" • ")||"Not selected")}</p><h2 style="color:${c}">Career / Education Goals</h2><p>${esc(all(S.vision,S.visionOther).join(" • ")||"Not selected")}</p></section>
+<section class="print-page"><h1 style="color:${c}">Career & Training</h1>${img("career")}<h2 style="color:${c}">Career Areas</h2><p>${esc(all(S.careerAreas,S.careerAreasOther).join(" • ")||"Not selected")}</p><h2 style="color:${c}">Specific Job or Career</h2><p>${esc(S.careerChoice||"Not selected")}</p><h2 style="color:${c}">Education or Training</h2><p>${esc(all(S.training,S.trainingOther).join(" • ")||"Not selected")}</p></section>
+${[1,2,3,4,5].map(y=>`<section class="print-page"><h1 style="color:${c}">Year ${y} — ${Number(S.gradYear||new Date().getFullYear())+y-1}</h1>${img("year"+y)}<h2 style="color:${c}">My Ideas</h2><p>${esc(yearGoals(y).map(x=>x.text).join(" • ")||"No ideas assigned.")}</p><h2 style="color:#B36B00">Challenges I May Face</h2><p style="color:#8A5600">${esc(yearChallenges(y).map(x=>x.text).join(" • ")||"No challenges assigned.")}</p><h2 style="color:${c}">My Plan</h2><p style="white-space:pre-wrap;line-height:1.65">${esc(S.yearWriting[y-1]||"Not written yet.")}</p></section>`).join("")}`
 }
 function printPlan(){let w=open("","_blank");w.document.write(`<!doctype html><html><head><title>Five-Year Plan</title><style>${document.querySelector("style").textContent}body{background:white;font-size:18px;line-height:1.6}.print-page{max-width:8.5in;margin:auto;padding:.55in}h1{color:var(--a);font-size:34px}h2{font-size:25px}p{font-size:18px;line-height:1.65}</style></head><body class="${S.theme}" style="--a:${themeCss()}">${finished()}<script>onload=()=>print()<\/script></body></html>`);w.document.close()}
 function downloadPlan(){let c=`<!doctype html><html><head><meta charset="utf-8"><title>${esc(S.studentName)} Five-Year Plan</title><style>${document.querySelector("style").textContent}body{background:#eef2f7;font-size:18px;line-height:1.6}.print-page{max-width:8.5in;margin:20px auto;background:white;padding:.55in}h1{font-size:34px}h2{font-size:25px}p{font-size:18px;line-height:1.65}</style></head><body class="${S.theme}" style="--a:${themeCss()}"><div class="no-print" style="position:sticky;top:0;background:#172437;padding:12px;text-align:center"><button onclick="print()">Print / Save PDF</button></div>${finished()}</body></html>`;blob(c,"text/html",base()+"_five_year_plan.html")}
@@ -267,11 +260,6 @@ const children=[];
 const addHeading=(text,level=HeadingLevel.HEADING_1,center=false)=>children.push(new Paragraph({heading:level,alignment:center?AlignmentType.CENTER:AlignmentType.LEFT,children:[new TextRun({text,bold:true,color})]}));
 const addText=(text,center=false)=>children.push(new Paragraph({alignment:center?AlignmentType.CENTER:AlignmentType.LEFT,spacing:{after:180},children:[new TextRun({text:String(text||"")})]}));
 const addList=(values)=>addText((values&&values.length)?values.join(" • "):"Not selected");
-const addDecoration=()=>{
-if(S.decoration==="clean")return;
-const symbol=S.decoration==="stars"?"★   ✦   ★   ✧   ★   ✦   ★":S.decoration==="path"?"●   ───   ●   ───   ●   ───   ●":"◆   ●   ▲   ✦   ■   ●   ◆";
-children.push(new Paragraph({alignment:AlignmentType.CENTER,spacing:{after:240},children:[new TextRun({text:symbol,bold:true,color,size:34})]}));
-};
 const addImage=async(key,width=220,height=165)=>{
 if(!S.images[key])return;
 try{
@@ -288,21 +276,18 @@ console.error("Could not add picture to Word document:",key,e);
 flash("One picture could not be added to the Word document. Try uploading it again as a JPG or PNG.")
 }
 };
-addDecoration();
 addHeading("My Five-Year Plan",HeadingLevel.TITLE,true);
 addHeading(S.studentName||"Student Name",HeadingLevel.HEADING_1,true);
 addText("Expected graduation year: "+(S.gradYear||""),true);
 await addImage("headshot",220,180);
 children.push(new Paragraph({children:[new PageBreak()]}));
 
-addDecoration();
 addHeading("My Personal Goals");
 addList(all(S.personalGoals,S.personalOther));
 addHeading("Why These Goals Matter to Me",HeadingLevel.HEADING_2);
 addText(S.personalWhy||"Not written yet.");
 children.push(new Paragraph({children:[new PageBreak()]}));
 
-addDecoration();
 addHeading("My Strengths & Growth");
 addHeading("My Strengths",HeadingLevel.HEADING_2);
 addList(all(S.strengths,S.strengthsOther));
@@ -312,7 +297,6 @@ addHeading("Career / Education Goals",HeadingLevel.HEADING_2);
 addList(all(S.vision,S.visionOther));
 children.push(new Paragraph({children:[new PageBreak()]}));
 
-addDecoration();
 addHeading("Career & Training");
 await addImage("career",220,165);
 addHeading("Career Areas",HeadingLevel.HEADING_2);
@@ -324,7 +308,6 @@ addList(all(S.training,S.trainingOther));
 
 for(let y=1;y<=5;y++){
 children.push(new Paragraph({children:[new PageBreak()]}));
-addDecoration();
 addHeading(`Year ${y} — ${Number(S.gradYear||new Date().getFullYear())+y-1}`);
 await addImage("year"+y,220,165);
 addHeading("My Ideas",HeadingLevel.HEADING_2);

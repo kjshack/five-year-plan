@@ -218,14 +218,21 @@ const colors={orange:"E87524",blue:"2563B5",green:"2F7C4B",purple:"7653B5"};
 return colors[S.theme]||colors.orange
 }
 function themeCss(){return "#"+themeHex()}
-function deco(){return S.decoration==="stars"?"★ ✦ ★":S.decoration==="path"?"● ─── ● ─── ●":S.decoration==="confetti"?"◆ ● ▲ ✦ ◆":"—"}function img(k){return S.images[k]?`<img src="${S.images[k]}" style="max-width:220px;max-height:180px;border-radius:14px">`:""}
+function deco(){return S.decoration==="stars"?"★ ✦ ★ ✧ ★ ✦ ★":S.decoration==="path"?"● ─── ● ─── ● ─── ●":S.decoration==="confetti"?"◆  ●  ▲  ✦  ■  ●  ◆":""}
+function decorationHtml(position="top"){
+if(S.decoration==="clean")return "";
+const label=S.decoration==="stars"?"Stars":S.decoration==="path"?"Path":"Confetti";
+const extra=S.decoration==="confetti"?"letter-spacing:12px":S.decoration==="path"?"letter-spacing:3px":"letter-spacing:8px";
+return `<div aria-label="${label} decoration" style="text-align:center;color:${themeCss()};font-size:${position==="cover"?30:22}px;font-weight:800;${extra};margin:${position==="bottom"?"24px 0 0":"0 0 22px"};line-height:1.5">${deco()}</div>`
+}
+function img(k){return S.images[k]?`<img src="${S.images[k]}" style="max-width:220px;max-height:180px;border-radius:14px">`:""}
 function finished(){
 const c=themeCss();
-return `<section class="print-page" style="text-align:center;display:flex;flex-direction:column;justify-content:center;align-items:center"><h1 style="font-size:42px;margin-bottom:18px;color:${c}">My Five-Year Plan</h1><h2 style="font-size:31px;margin:8px 0;color:${c}">${esc(S.studentName||"Student Name")}</h2><p style="font-size:20px">Expected graduation year: ${esc(S.gradYear)}</p>${img("headshot")}</section>
-<section class="print-page"><h1 style="font-size:36px;color:${c}">My Personal Goals</h1><p style="font-size:22px;line-height:1.7">${esc(all(S.personalGoals,S.personalOther).join(" • ")||"Not selected")}</p><h2 style="color:${c}">Why These Goals Matter to Me</h2><p style="white-space:pre-wrap;line-height:1.65">${esc(S.personalWhy||"Not written yet.")}</p></section>
-<section class="print-page"><h1 style="color:${c}">My Strengths & Growth</h1><h2 style="color:${c}">My Strengths</h2><p>${esc(all(S.strengths,S.strengthsOther).join(" • ")||"Not selected")}</p><h2 style="color:${c}">Areas I Want to Improve</h2><p>${esc(all(S.growth,S.growthOther).join(" • ")||"Not selected")}</p><h2 style="color:${c}">Career / Education Goals</h2><p>${esc(all(S.vision,S.visionOther).join(" • ")||"Not selected")}</p></section>
-<section class="print-page"><h1 style="color:${c}">Career & Training</h1>${img("career")}<h2 style="color:${c}">Career Areas</h2><p>${esc(all(S.careerAreas,S.careerAreasOther).join(" • ")||"Not selected")}</p><h2 style="color:${c}">Specific Job or Career</h2><p>${esc(S.careerChoice||"Not selected")}</p><h2 style="color:${c}">Education or Training</h2><p>${esc(all(S.training,S.trainingOther).join(" • ")||"Not selected")}</p></section>
-${[1,2,3,4,5].map(y=>`<section class="print-page"><h1 style="color:${c}">Year ${y} — ${Number(S.gradYear||new Date().getFullYear())+y-1}</h1>${img("year"+y)}<h2 style="color:${c}">My Ideas</h2><p>${esc(yearGoals(y).map(x=>x.text).join(" • ")||"No ideas assigned.")}</p><h2 style="color:#B36B00">Challenges I May Face</h2><p style="color:#8A5600">${esc(yearChallenges(y).map(x=>x.text).join(" • ")||"No challenges assigned.")}</p><h2 style="color:${c}">My Plan</h2><p style="white-space:pre-wrap;line-height:1.65">${esc(S.yearWriting[y-1]||"Not written yet.")}</p></section>`).join("")}`
+return `<section class="print-page" style="text-align:center;display:flex;flex-direction:column;justify-content:center;align-items:center">${decorationHtml("cover")}<h1 style="font-size:42px;margin-bottom:18px;color:${c}">My Five-Year Plan</h1><h2 style="font-size:31px;margin:8px 0;color:${c}">${esc(S.studentName||"Student Name")}</h2><p style="font-size:20px">Expected graduation year: ${esc(S.gradYear)}</p>${img("headshot")}</section>
+<section class="print-page">${decorationHtml()}<h1 style="font-size:36px;color:${c}">My Personal Goals</h1><p style="font-size:22px;line-height:1.7">${esc(all(S.personalGoals,S.personalOther).join(" • ")||"Not selected")}</p><h2 style="color:${c}">Why These Goals Matter to Me</h2><p style="white-space:pre-wrap;line-height:1.65">${esc(S.personalWhy||"Not written yet.")}</p></section>
+<section class="print-page">${decorationHtml()}<h1 style="color:${c}">My Strengths & Growth</h1><h2 style="color:${c}">My Strengths</h2><p>${esc(all(S.strengths,S.strengthsOther).join(" • ")||"Not selected")}</p><h2 style="color:${c}">Areas I Want to Improve</h2><p>${esc(all(S.growth,S.growthOther).join(" • ")||"Not selected")}</p><h2 style="color:${c}">Career / Education Goals</h2><p>${esc(all(S.vision,S.visionOther).join(" • ")||"Not selected")}</p></section>
+<section class="print-page">${decorationHtml()}<h1 style="color:${c}">Career & Training</h1>${img("career")}<h2 style="color:${c}">Career Areas</h2><p>${esc(all(S.careerAreas,S.careerAreasOther).join(" • ")||"Not selected")}</p><h2 style="color:${c}">Specific Job or Career</h2><p>${esc(S.careerChoice||"Not selected")}</p><h2 style="color:${c}">Education or Training</h2><p>${esc(all(S.training,S.trainingOther).join(" • ")||"Not selected")}</p></section>
+${[1,2,3,4,5].map(y=>`<section class="print-page">${decorationHtml()}<h1 style="color:${c}">Year ${y} — ${Number(S.gradYear||new Date().getFullYear())+y-1}</h1>${img("year"+y)}<h2 style="color:${c}">My Ideas</h2><p>${esc(yearGoals(y).map(x=>x.text).join(" • ")||"No ideas assigned.")}</p><h2 style="color:#B36B00">Challenges I May Face</h2><p style="color:#8A5600">${esc(yearChallenges(y).map(x=>x.text).join(" • ")||"No challenges assigned.")}</p><h2 style="color:${c}">My Plan</h2><p style="white-space:pre-wrap;line-height:1.65">${esc(S.yearWriting[y-1]||"Not written yet.")}</p></section>`).join("")}`
 }
 function printPlan(){let w=open("","_blank");w.document.write(`<!doctype html><html><head><title>Five-Year Plan</title><style>${document.querySelector("style").textContent}body{background:white;font-size:18px;line-height:1.6}.print-page{max-width:8.5in;margin:auto;padding:.55in}h1{color:var(--a);font-size:34px}h2{font-size:25px}p{font-size:18px;line-height:1.65}</style></head><body class="${S.theme}" style="--a:${themeCss()}">${finished()}<script>onload=()=>print()<\/script></body></html>`);w.document.close()}
 function downloadPlan(){let c=`<!doctype html><html><head><meta charset="utf-8"><title>${esc(S.studentName)} Five-Year Plan</title><style>${document.querySelector("style").textContent}body{background:#eef2f7;font-size:18px;line-height:1.6}.print-page{max-width:8.5in;margin:20px auto;background:white;padding:.55in}h1{font-size:34px}h2{font-size:25px}p{font-size:18px;line-height:1.65}</style></head><body class="${S.theme}" style="--a:${themeCss()}"><div class="no-print" style="position:sticky;top:0;background:#172437;padding:12px;text-align:center"><button onclick="print()">Print / Save PDF</button></div>${finished()}</body></html>`;blob(c,"text/html",base()+"_five_year_plan.html")}
@@ -260,6 +267,11 @@ const children=[];
 const addHeading=(text,level=HeadingLevel.HEADING_1,center=false)=>children.push(new Paragraph({heading:level,alignment:center?AlignmentType.CENTER:AlignmentType.LEFT,children:[new TextRun({text,bold:true,color})]}));
 const addText=(text,center=false)=>children.push(new Paragraph({alignment:center?AlignmentType.CENTER:AlignmentType.LEFT,spacing:{after:180},children:[new TextRun({text:String(text||"")})]}));
 const addList=(values)=>addText((values&&values.length)?values.join(" • "):"Not selected");
+const addDecoration=()=>{
+if(S.decoration==="clean")return;
+const symbol=S.decoration==="stars"?"★   ✦   ★   ✧   ★   ✦   ★":S.decoration==="path"?"●   ───   ●   ───   ●   ───   ●":"◆   ●   ▲   ✦   ■   ●   ◆";
+children.push(new Paragraph({alignment:AlignmentType.CENTER,spacing:{after:240},children:[new TextRun({text:symbol,bold:true,color,size:34})]}));
+};
 const addImage=async(key,width=220,height=165)=>{
 if(!S.images[key])return;
 try{
@@ -276,18 +288,21 @@ console.error("Could not add picture to Word document:",key,e);
 flash("One picture could not be added to the Word document. Try uploading it again as a JPG or PNG.")
 }
 };
+addDecoration();
 addHeading("My Five-Year Plan",HeadingLevel.TITLE,true);
 addHeading(S.studentName||"Student Name",HeadingLevel.HEADING_1,true);
 addText("Expected graduation year: "+(S.gradYear||""),true);
 await addImage("headshot",220,180);
 children.push(new Paragraph({children:[new PageBreak()]}));
 
+addDecoration();
 addHeading("My Personal Goals");
 addList(all(S.personalGoals,S.personalOther));
 addHeading("Why These Goals Matter to Me",HeadingLevel.HEADING_2);
 addText(S.personalWhy||"Not written yet.");
 children.push(new Paragraph({children:[new PageBreak()]}));
 
+addDecoration();
 addHeading("My Strengths & Growth");
 addHeading("My Strengths",HeadingLevel.HEADING_2);
 addList(all(S.strengths,S.strengthsOther));
@@ -297,6 +312,7 @@ addHeading("Career / Education Goals",HeadingLevel.HEADING_2);
 addList(all(S.vision,S.visionOther));
 children.push(new Paragraph({children:[new PageBreak()]}));
 
+addDecoration();
 addHeading("Career & Training");
 await addImage("career",220,165);
 addHeading("Career Areas",HeadingLevel.HEADING_2);
@@ -308,6 +324,7 @@ addList(all(S.training,S.trainingOther));
 
 for(let y=1;y<=5;y++){
 children.push(new Paragraph({children:[new PageBreak()]}));
+addDecoration();
 addHeading(`Year ${y} — ${Number(S.gradYear||new Date().getFullYear())+y-1}`);
 await addImage("year"+y,220,165);
 addHeading("My Ideas",HeadingLevel.HEADING_2);

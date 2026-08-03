@@ -249,8 +249,8 @@ const ctx=canvas.getContext("2d");
 ctx.fillStyle="#ffffff";
 ctx.fillRect(0,0,canvas.width,canvas.height);
 ctx.drawImage(image,0,0,canvas.width,canvas.height);
-const response=await fetch(canvas.toDataURL("image/png"));
-return {data:new Uint8Array(await response.arrayBuffer()),type:"png"}
+const pngDataUri=canvas.toDataURL("image/png");
+return {data:pngDataUri,type:"png",aspectRatio:canvas.width/canvas.height}
 }
 async function downloadDocx(){
 if(!window.docx){flash("The Word exporter could not load. Check your internet connection and try again.");return}
@@ -264,7 +264,13 @@ const addImage=async(key,width=220,height=165)=>{
 if(!S.images[key])return;
 try{
 const image=await imageForDocx(S.images[key]);
-children.push(new Paragraph({alignment:AlignmentType.CENTER,children:[new ImageRun({type:image.type,data:image.data,transformation:{width,height}})]}))
+const fittedWidth=width;
+const fittedHeight=Math.max(1,Math.round(width/image.aspectRatio));
+const maxHeight=height;
+const finalScale=Math.min(1,maxHeight/fittedHeight);
+const finalWidth=Math.max(1,Math.round(fittedWidth*finalScale));
+const finalHeight=Math.max(1,Math.round(fittedHeight*finalScale));
+children.push(new Paragraph({alignment:AlignmentType.CENTER,children:[new ImageRun({type:image.type,data:image.data,transformation:{width:finalWidth,height:finalHeight}})]}))
 }catch(e){
 console.error("Could not add picture to Word document:",key,e);
 flash("One picture could not be added to the Word document. Try uploading it again as a JPG or PNG.")
@@ -319,12 +325,17 @@ styles:{default:{document:{run:{font:"Aptos",size:28}}},paragraphStyles:[
 ]},
 sections:[{properties:{page:{margin:{top:720,right:720,bottom:720,left:720}}},children}]
 });
+try{
 const out=await Packer.toBlob(doc);
 const a=document.createElement("a");
 a.href=URL.createObjectURL(out);
 a.download=base()+"_five_year_plan.docx";
 a.click();
 setTimeout(()=>URL.revokeObjectURL(a.href),1500)
+}catch(e){
+console.error("Word document creation failed:",e);
+flash("The Word document could not be created. Please try again or remove and re-upload the pictures.")
+}
 }
 function blob(c,t,n){let a=document.createElement("a");a.href=URL.createObjectURL(new Blob([c],{type:t}));a.download=n;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}function base(){return(S.studentName||"student").replace(/[^a-z0-9]+/gi,"_")}render();
 </script></body></html>

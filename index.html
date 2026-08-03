@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FuturePath Five-Year Plan</title>
+<style>
+:root{--a:#e87524;--p:#fff0e4;--ink:#213047;--muted:#657287;--bg:#eef2f7;--line:#dce3ec}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:var(--ink)}button,input,select,textarea{font:inherit}button{cursor:pointer}
+.app{display:grid;grid-template-columns:275px 1fr;min-height:100vh}.side{background:#172437;color:#fff;padding:22px 17px;position:sticky;top:0;height:100vh;overflow:auto}
+.brand{display:flex;gap:11px;align-items:center;margin-bottom:22px}.logo{width:45px;height:45px;border-radius:13px;background:var(--a);display:grid;place-items:center;font-size:23px;font-weight:800}.brand h1{font-size:20px;margin:0}.brand p{font-size:12px;color:#bdc8d8;margin:3px 0}
+nav{display:grid;gap:7px}nav button{border:0;border-radius:10px;padding:11px;text-align:left;background:transparent;color:#dce5f2}nav button.active{background:var(--a);color:#fff}
+.note{font-size:12px;line-height:1.45;color:#bdc8d8;border-top:1px solid #35445a;margin-top:20px;padding-top:15px}
+main{padding:24px;max-width:1220px;width:100%;margin:auto}.top{display:flex;justify-content:space-between;align-items:center;gap:18px;margin-bottom:16px}.eyebrow{font-size:12px;font-weight:800;letter-spacing:.12em;color:var(--a);margin:0 0 4px}.top h2{margin:0}.prog{min-width:260px}.prow{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:6px}.track{height:9px;border-radius:99px;background:#d9e0e9;overflow:hidden}.bar{height:100%;background:var(--a)}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:27px;box-shadow:0 12px 28px rgba(25,39,60,.08)}.intro{background:linear-gradient(135deg,var(--p),#fff);border-radius:15px;padding:19px;margin-bottom:21px}.intro h3{margin:0 0 7px}.intro p{margin:0;line-height:1.5;color:#4f5d70}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.field{display:grid;gap:7px;margin-bottom:15px}.field label,.st{font-weight:700}.field input,.field select,.field textarea{width:100%;padding:13px;border:1px solid #cbd4df;border-radius:10px;background:#fff;font-size:17px}.field textarea{min-height:110px}
+.section{margin:23px 0}.st{font-size:18px;margin-bottom:5px}.hint{font-size:13px;color:var(--muted);margin:0 0 11px}.choices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.choice{position:relative}.choice input{position:absolute;opacity:0}.choice label{display:block;border:2px solid var(--line);border-radius:11px;padding:14px;background:#fff;min-height:54px;font-size:17px;line-height:1.35}.choice input:checked+label{border-color:var(--a);background:var(--p);font-weight:700}.other{margin-top:10px}
+.help{border:1px dashed #f0a46f;background:#fff9f4;border-radius:11px;padding:13px;margin-top:9px}.help summary{font-weight:700;color:#aa4e0c}.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:9px}.chip{border:1px solid #efbd97;background:#fff;border-radius:999px;padding:7px 10px}
+.actions{display:flex;justify-content:space-between;gap:10px;margin-top:17px}.btn{border:0;border-radius:10px;padding:11px 17px;font-weight:700}.primary{background:var(--a);color:#fff}.secondary{background:#e6ebf1}.danger{background:#fff0f0;color:#a82222;border:1px solid #efcaca}
+.timeline{display:grid;gap:11px}.trow{display:grid;grid-template-columns:minmax(220px,1fr) auto;gap:14px;align-items:center;border:1px solid var(--line);border-radius:12px;padding:13px}.trow small{display:block;color:var(--muted);margin-top:3px}.years{display:flex;gap:5px;flex-wrap:wrap}.yb input{position:absolute;opacity:0}.yb label{display:grid;place-items:center;width:54px;height:40px;border:2px solid var(--line);border-radius:8px;font-weight:700}.yb input:checked+label{background:var(--a);border-color:var(--a);color:#fff}
+.review{display:grid;grid-template-columns:1fr 1fr;gap:13px}.rcard,.yplan{border:1px solid var(--line);border-radius:13px;padding:15px}.rcard h4{margin:0 0 7px;color:var(--a)}.rcard p{margin:4px 0;line-height:1.55;font-size:17px}.yplan{margin-bottom:16px}.yplan h3{margin-top:0}.keys{display:flex;flex-wrap:wrap;gap:7px;margin:9px 0 14px}.key{background:var(--p);border:1px solid #efbd97;border-radius:999px;padding:9px 13px;font-size:16px;line-height:1.3}.key.challenge-key{background:#fff3d6;border-color:#e1a83a;color:#7a4c00}.challenge-section{border-left:5px solid #d28a00;background:#fffaf0;border-radius:12px;padding:16px;margin-top:16px}.challenge-section .st{color:#8a5600}.plantext{min-height:190px;width:100%;padding:15px;border:1px solid #cbd4df;border-radius:10px;font-size:18px;line-height:1.6}.guide{margin:14px 0;border:1px solid var(--line);border-radius:12px;background:#fafbfd}.guide>summary{cursor:pointer;font-weight:800;padding:12px;color:var(--a)}.guide-body{padding:0 12px 12px}.guide-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.guide-group{border:1px solid var(--line);border-radius:10px;padding:10px;background:#fff}.guide-group h4{margin:0 0 8px}.starter{display:flex;justify-content:space-between;gap:8px;align-items:center;border-top:1px solid #edf1f5;padding:8px 0}.starter:first-of-type{border-top:0}.starter button{flex:0 0 auto}.thinking{background:var(--p);border-radius:10px;padding:10px;margin:10px 0;font-size:13px;line-height:1.5}.writing-status{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:8px;font-size:14px}.writing-count{font-weight:800}.writing-message{color:#9a2f2f}.writing-message.ok{color:#26723a}.plantext.invalid{border:2px solid #d56a6a;background:#fffafa}.plantext.valid{border:2px solid #75b982}.btn:disabled{opacity:.5;cursor:not-allowed}
+.themes{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.theme input{position:absolute;opacity:0}.theme label{display:block;border:2px solid var(--line);border-radius:11px;padding:13px;text-align:center}.theme input:checked+label{border-color:var(--a);background:var(--p)}
+.uploads{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.upload{border:1px solid var(--line);border-radius:11px;padding:12px}.upload img{max-width:100%;max-height:150px;border-radius:9px;margin-top:9px}
+.flash{display:none;background:#eaf7ed;border:1px solid #b8ddc0;color:#245f30;border-radius:9px;padding:9px;margin-bottom:13px}
+body.blue{--a:#2563b5;--p:#eaf2ff}body.green{--a:#2f7c4b;--p:#e9f7ee}body.purple{--a:#7653b5;--p:#f1ecfb}body.orange{--a:#e87524;--p:#fff0e4}
+@media(max-width:900px){.app{grid-template-columns:1fr}.side{position:static;height:auto}nav{grid-template-columns:1fr 1fr}.top{align-items:flex-start;flex-direction:column}.prog{width:100%}.choices,.grid2,.grid3,.review,.themes,.uploads{grid-template-columns:1fr 1fr}.trow{grid-template-columns:1fr}}
+@media(max-width:560px){nav,.choices,.grid2,.grid3,.review,.themes,.uploads{grid-template-columns:1fr}main{padding:12px}.card{padding:18px}}
+@media print{.side,.top,.actions,.no-print{display:none!important}.app{display:block}main{padding:0;max-width:none}.card{box-shadow:none;border:0}.print-page{page-break-after:always;min-height:9in;padding:.4in}}
+</style></head>
+<body><div class="app"><aside class="side"><div class="brand"><div class="logo">5</div><div><h1>FuturePath</h1><p>Five-Year Plan Builder</p></div></div><nav id="nav"></nav><div class="note">Answers save automatically in this browser. Download saved answers before switching computers.</div></aside>
+<main><header class="top"><div><p class="eyebrow" id="eye"></p><h2 id="title"></h2></div><div class="prog"><div class="prow"><span id="step"></span><span id="pct"></span></div><div class="track"><div class="bar" id="bar"></div></div></div></header><div class="flash" id="flash"></div><section class="card" id="content"></section><div class="actions"><button class="btn secondary" id="back">Back</button><div><button class="btn danger" id="reset">Start Over</button> <button class="btn primary" id="next">Next</button></div></div></main></div>
+<script src="https://unpkg.com/docx@9.5.1/build/index.umd.js"></script>
+<script>
+const STORE="futurePathV3_7_option_updates";
+const steps=[
+["Home","WELCOME","FuturePath Five-Year Plan"],
+["Start My Plan","START HERE","Start My Plan"],
+["Strengths & Growth","ABOUT ME","My Strengths & Growth"],
+["Career & Training","CAREER PATH","Career & Training"],
+["Supports & Living","INDEPENDENCE","Supports & Independent Living"],
+["Timeline","MY ROADMAP","Place My Goals Across Five Years"],
+["Check It","REVIEW","Check My Choices"],
+["My Plan","WRITE MY PLAN","My Five-Year Plan"],
+["Customize & Download","MAKE IT MINE","Customize & Download"]];
+const O={
+personal:["Have a pet","Travel somewhere new","Have a boyfriend, girlfriend, or significant other","Get married","Have a child or family","Make new friends","Spend more time with friends","Spend more time with family","Join a club, team, group, or community activity","Learn to play an instrument","Learn another language","Learn to cook","Improve my health or fitness","Volunteer","Develop a hobby","Become more confident","Become more independent","I am not sure yet"],
+strengths:["Working with my hands","Working with words","Working with numbers","Working independently","Working with a team","Helping people","Working with children","Working with older adults","Paying attention to details","Being creative","Being dependable","Being patient","Being empathetic","Solving problems","Being flexible","Communicating","Following directions","Technology"],
+growth:["Speaking up for myself","Managing my time","Staying organized","Handling stress","Asking for help","Following directions","Completing tasks","Working with others","Communicating","Managing money","Using transportation","Cooking","Cleaning","Making appointments","Problem solving"],
+vision:["Working full time","Working part time","Attending a four-year university","Attending community college","Attending trade or technical school","Completing a certificate program","Serving in the military","Completing an apprenticeship","Receiving on-the-job training","Volunteering","Owning a business","Still exploring"],
+career:[
+"Animals, Plants & the Environment — veterinarian, vet tech, landscaper",
+"Construction & Repair — carpenter, electrician, maintenance worker",
+"Art, Media & Communication — graphic designer, photographer, content creator",
+"Business & Office Work — receptionist, office assistant, manager",
+"Education & Child Care — teacher, teacher assistant, daycare worker",
+"Money & Banking — bank teller, bookkeeper, accountant",
+"Government & Community Service — postal worker, city worker, public service assistant",
+"Health & Medical — nurse, medical assistant, pharmacy technician",
+"Restaurants, Hotels & Travel — cook, server, hotel worker",
+"Helping & Personal Services — social worker, hairstylist, caregiver",
+"Computers & Technology — computer support worker, web designer, programmer",
+"Law, Safety & Security — police officer, firefighter, security guard",
+"Manufacturing & Production — machine operator, assembler, quality inspector",
+"Marketing, Sales & Retail — cashier, salesperson, store associate",
+"Science, Engineering & Design — lab technician, engineer, drafter",
+"Transportation & Delivery — driver, mechanic, warehouse worker"
+],
+training:["Four-year university","Community college","Technical or trade school","Certificate program","Apprenticeship","Internship","On-the-job training","Military training","Mentor","Job coach","I am not sure yet"],
+help:["Family","Teacher","School counselor","Mentor","Job coach","Vocational Rehabilitation counselor","Tutor","College disability services","Coworker or supervisor","Transportation support"],
+living:["Live with family","College dorm","Apartment alone","Apartment with a roommate","Supported living","Own a home","I am not sure yet"],
+transport:["Drive my own car","Ride with family or friends","Public transportation","Walk or bicycle","Taxi or ride service","Rideshare","Transportation support","I am not sure yet"],
+money:["Open a bank account","Learn to make a budget","Save money","Pay my own bills","Build credit","Save for a car","Save for housing","Get scholarships","Get grants","Get student loans","I am not sure yet"],
+independent:["Cook meals","Shop for groceries","Clean my home","Do laundry","Manage medicine","Make appointments","Use transportation","Get my driver's permit","Get my driver's license","Stay safe in the community","Manage my schedule","Ask for help when needed"],
+visionChallenges:["I may change my mind about my future plans","I may need more information about my options","I may need help choosing between work and more training","I may need to improve my grades or school attendance","I may need accommodations or extra support"],
+personalChallenges:["I may feel nervous trying new things","I may have trouble making or keeping friends","I may need help managing my emotions","My family may not agree with all of my plans","I may need to become more confident or independent"],
+strengthChallenges:["I may have trouble recognizing my strengths","I may need more practice using my strengths","I may have difficulty asking for help","I may get discouraged when something is hard","I may need reminders to stay organized"],
+careerChallenges:["I may not know which career fits me yet","I may not have enough work experience","I may need help completing applications","I may need to improve my interview skills","I may need accommodations at work","There may not be many openings in the job I want"],
+trainingChallenges:["Training or school may cost too much","I may need help finding the right program","I may need transportation to training","I may need help completing forms or applications","I may need extra time or learning support"],
+livingChallenges:["Housing may cost too much","I may need help finding a safe place to live","I may not be ready to live on my own","I may need support with chores or daily routines","I may need a roommate or supported living"],
+transportChallenges:["I may not have a driver's license","I may not have access to a car","Public transportation may be limited","I may need help learning a route","Transportation may cost too much"],
+moneyChallenges:["I may have trouble saving money","I may need help making a budget","I may not understand bills, credit, or banking","I may not earn enough money at first","Unexpected expenses may come up"],
+independentChallenges:["I may forget appointments or tasks","I may need more practice with cooking or cleaning","I may need help managing medicine","I may have trouble managing my time","I may need help staying safe in the community"],
+supportChallenges:["I may not know who to ask for help","I may feel uncomfortable asking for help","A support person may not always be available","I may need help finding adult services","I may need to explain the supports that work best for me"]};
+const D={studentName:"",grade:"",gradYear:new Date().getFullYear()+1,personalGoals:[],personalOther:"",personalWhy:"",strengths:[],strengthsOther:"",growth:[],growthOther:"",vision:[],visionOther:"",careerAreas:[],careerAreasOther:"",careerChoice:"",training:[],trainingOther:"",trainingHelp:[],trainingHelpOther:"",living:[],livingOther:"",transport:[],transportOther:"",money:[],moneyOther:"",independent:[],independentOther:"",supports:[],supportsOther:"",
+visionChallenges:[],visionChallengesOther:"",personalChallenges:[],personalChallengesOther:"",
+strengthChallenges:[],strengthChallengesOther:"",careerChallenges:[],careerChallengesOther:"",
+trainingChallenges:[],trainingChallengesOther:"",livingChallenges:[],livingChallengesOther:"",
+transportChallenges:[],transportChallengesOther:"",moneyChallenges:[],moneyChallengesOther:"",
+independentChallenges:[],independentChallengesOther:"",supportChallenges:[],supportChallengesOther:"",
+timeline:{},yearWriting:["","","","",""],theme:"orange",decoration:"clean",images:{headshot:"",dream:"",career:"",year1:"",year2:"",year3:"",year4:"",year5:""}};
+let S;try{S=Object.assign(structuredClone(D),JSON.parse(localStorage.getItem(STORE)||"{}"));S.images=Object.assign({},D.images,S.images||{});S.timeline=S.timeline||{};S.yearWriting=[0,1,2,3,4].map(i=>(S.yearWriting||[])[i]||"")}catch(e){S=structuredClone(D)}let cur=Number(localStorage.getItem(STORE+"Step")||0); if(cur<0||cur>=steps.length)cur=0;
+const $=q=>document.querySelector(q),$$=q=>[...document.querySelectorAll(q)],esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
+function save(){localStorage.setItem(STORE,JSON.stringify(S));localStorage.setItem(STORE+"Step",cur)}
+function flash(t){$("#flash").textContent=t;$("#flash").style.display="block";setTimeout(()=>$("#flash").style.display="none",2200)}
+function displayChoice(path,x){
+if(path==="careerAreas"&&x.includes(" — ")){
+const parts=x.split(" — ");
+return `<strong>${esc(parts[0])}</strong><br><span style="font-weight:400">${esc(parts.slice(1).join(" — "))}</span>`
+}
+return esc(x)
+}
+function group(path,items,sel){return `<div class="choices">${items.map((x,i)=>`<div class="choice"><input id="${path}${i}" type="checkbox" data-array="${path}" value="${esc(x)}" ${(sel||[]).includes(x)?"checked":""}><label for="${path}${i}">${displayChoice(path,x)}</label></div>`).join("")}</div>`}
+function other(path,val,ph="Type another choice"){return `<div class="field other"><label>Other</label><input data-field="${path}" value="${esc(val)}" placeholder="${esc(ph)}"></div>`}
+function help(path,ideas){return `<details class="help"><summary>Need Help Getting Started?</summary><div class="chips">${ideas.map(x=>`<button type="button" class="chip" data-fill="${path}" data-text="${esc(x)}">${esc(x)}</button>`).join("")}</div></details>`}
+function challengeBlock(path,otherPath,items,title="Challenges I May Face"){return `<div class="challenge-section"><div class="st">${esc(title)}</div><p class="hint">Choose any challenges that could make this goal harder. You can choose more than one.</p>${group(path,items,S[path])}${other(otherPath,S[otherPath],"Another challenge I may face")}</div>`}
+function all(a,o){return [...(a||[]),...(o&&String(o).trim()?[String(o).trim()]:[])]}
+function render(){document.body.className=S.theme;$("#nav").innerHTML=steps.map((s,i)=>`<button data-step="${i}" class="${i===cur?"active":""}">${i+1}. ${s[0]}</button>`).join("");$("#eye").textContent=steps[cur][1];$("#title").textContent=steps[cur][2];$("#step").textContent=`Step ${cur+1} of ${steps.length}`;let p=Math.round((cur+1)/steps.length*100);$("#pct").textContent=p+"% complete";$("#bar").style.width=p+"%";$("#back").disabled=cur===0;$("#next").textContent=cur===steps.length-1?"Save Progress":"Next";$("#content").innerHTML=page(cur);bind()}
+function page(i){
+if(i===0)return `<div class="intro" style="text-align:center;padding:42px 24px"><h1 style="font-size:42px;margin:0 0 14px;color:var(--a)">FuturePath</h1><h2 style="font-size:28px;margin:0 0 14px">Build Your Five-Year Plan</h2><p style="font-size:18px;max-width:720px;margin:0 auto 24px;line-height:1.6">Think about your future, choose your goals, organize them across five years, and create a plan in your own words.</p><button type="button" class="btn primary" id="startHome" style="font-size:18px;padding:14px 24px">Start My Plan</button></div><div class="review"><div class="rcard"><h4>1. Choose</h4><p>Select career, education, personal, social, and independent-living goals.</p></div><div class="rcard"><h4>2. Organize</h4><p>Place each goal into one or more years on your timeline.</p></div><div class="rcard"><h4>3. Write</h4><p>Use your selected keywords to explain each year in your own words.</p></div><div class="rcard"><h4>4. Create</h4><p>Add pictures and a theme, then download or print your finished plan.</p></div></div>`;
+
+if(i===1)return `<div class="intro"><h3>Let’s build a plan that sounds like you.</h3><p>Start with your information, then choose career, education, personal, and social goals.</p></div>
+<div class="grid3"><div class="field"><label>Your name</label><input data-field="studentName" value="${esc(S.studentName)}"></div><div class="field"><label>Current grade</label><select data-field="grade"><option value="">Choose</option>${[9,10,11,12].map(x=>`<option ${String(S.grade)===String(x)?"selected":""}>${x}</option>`).join("")}</select></div><div class="field"><label>Expected graduation year</label><input type="number" data-field="gradYear" value="${esc(S.gradYear)}"></div></div>
+<div class="section"><div class="st">Career / Education Goals</div><p class="hint">What might you be doing during the next five years? Choose every answer that could be part of your future.</p>${group("vision",O.vision,S.vision)}${other("visionOther",S.visionOther,"Something else I may be doing")}${challengeBlock("visionChallenges","visionChallengesOther",O.visionChallenges)}</div>
+<div class="section"><div class="st">Personal / Social Goals</div><p class="hint">Choose all that matter to you.</p>${group("personalGoals",O.personal,S.personalGoals)}${other("personalOther",S.personalOther,"Another personal or social goal")}${challengeBlock("personalChallenges","personalChallengesOther",O.personalChallenges)}</div>
+<div class="field"><label>Why are these personal or social goals important to you?</label><textarea data-field="personalWhy">${esc(S.personalWhy)}</textarea>${help("personalWhy",["These goals will help me become more independent.","These goals would make me happy and help me grow.","These goals are part of the life I want after high school."])}</div>`;
+
+if(i===2)return `<div class="intro"><h3>What are you good at, and what would you like to improve?</h3><p>Choose your answers without writing an extra story.</p></div>
+<div class="section"><div class="st">My Strengths</div><p class="hint">Choose up to five.</p>${group("strengths",O.strengths,S.strengths)}${other("strengthsOther",S.strengthsOther,"Another strength")}${challengeBlock("strengthChallenges","strengthChallengesOther",O.strengthChallenges)}</div>
+<div class="section"><div class="st">Areas I Want to Improve</div>${group("growth",O.growth,S.growth)}${other("growthOther",S.growthOther,"Another area")}</div>`;
+
+if(i===3)return `<div class="intro"><h3>Explore career and training choices.</h3><p>Each career area includes examples to make the categories easier to understand. Veterinarian and veterinary technician are under Animals, Plants & the Environment.</p></div>
+<div class="section"><div class="st">Career areas I may want to explore</div><p class="hint">Choose one or more career areas.</p>${group("careerAreas",O.career,S.careerAreas)}${other("careerAreasOther",S.careerAreasOther,"Another career area")}${challengeBlock("careerChallenges","careerChallengesOther",O.careerChallenges)}</div>
+<div class="field"><label>What specific job or career would you like to have?</label><input data-field="careerChoice" value="${esc(S.careerChoice)}" placeholder="Example: veterinary assistant">${help("careerChoice",["Veterinary assistant","Auto mechanic","Welder","Teacher assistant","Nurse","Computer support specialist","Chef or cook","Cashier or customer service worker"])}</div>
+<div class="section"><div class="st">Education or training I may need</div>${group("training",O.training,S.training)}${other("trainingOther",S.trainingOther,"Another type of training")}${challengeBlock("trainingChallenges","trainingChallengesOther",O.trainingChallenges)}</div>`;
+
+if(i===4)return `<div class="intro"><h3>Think about the skills, services, and supports that may help you become more independent.</h3></div>
+<div class="section"><div class="st">Where I may live</div>${group("living",O.living,S.living)}${other("livingOther",S.livingOther)}${challengeBlock("livingChallenges","livingChallengesOther",O.livingChallenges)}</div>
+<div class="section"><div class="st">How I may get around</div>${group("transport",O.transport,S.transport)}${other("transportOther",S.transportOther)}${challengeBlock("transportChallenges","transportChallengesOther",O.transportChallenges)}</div>
+<div class="section"><div class="st">Money skills and goals</div>${group("money",O.money,S.money)}${other("moneyOther",S.moneyOther)}${challengeBlock("moneyChallenges","moneyChallengesOther",O.moneyChallenges)}</div>
+<div class="section"><div class="st">Independent living skills I need to learn</div>${group("independent",O.independent,S.independent)}${other("independentOther",S.independentOther)}${challengeBlock("independentChallenges","independentChallengesOther",O.independentChallenges)}</div>
+<div class="section"><div class="st">People or services that may support me</div>${group("supports",O.help,S.supports)}${other("supportsOther",S.supportsOther)}${challengeBlock("supportChallenges","supportChallengesOther",O.supportChallenges)}</div>`;
+
+if(i===5){let it=items();return `<div class="intro"><h3>Choose every year that applies.</h3><p>An activity can appear in more than one year. Strengths and growth areas do not appear on this timeline.</p></div><div class="timeline">${it.length?it.map(row).join(""):"<p>Please make choices on earlier pages first.</p>"}</div>`}
+
+if(i===6)return `<div class="intro"><h3>Here is what you selected.</h3><p>Your choices are organized under the headings below.</p></div><div class="review">${cards()}</div><div class="section"><div class="st">Timeline by Year</div>${summary()}</div>`;
+
+if(i===7)return `<div class="intro"><h3>Use the ideas above each box to write your plan in your own words.</h3><p>The keywords help you remember what you chose.</p></div>${[1,2,3,4,5].map(yearPlan).join("")}`;
+
+if(i===8)return `<div class="intro"><h3>Make your finished plan feel like yours.</h3><p>Choose a theme, add optional pictures, and download a polished copy.</p></div><div class="section"><div class="st">Color Theme</div><div class="themes">${["orange","blue","green","purple"].map(t=>`<div class="theme"><input id="t${t}" type="radio" name="theme" value="${t}" ${S.theme===t?"checked":""}><label for="t${t}">${t[0].toUpperCase()+t.slice(1)}</label></div>`).join("")}</div></div><div class="section"><div class="st">Decoration Style</div><div class="themes">${["clean","stars","path","confetti"].map(t=>`<div class="theme"><input id="d${t}" type="radio" name="dec" value="${t}" ${S.decoration===t?"checked":""}><label for="d${t}">${t[0].toUpperCase()+t.slice(1)}</label></div>`).join("")}</div></div><div class="section"><div class="st">Pictures</div><div class="uploads">${upload("headshot","Student photo")}${upload("dream","Dream picture")}${upload("career","Career picture")}${[1,2,3,4,5].map(y=>upload("year"+y,"Year "+y+" picture")).join("")}</div></div><div class="section"><button class="btn primary" id="print">Print / Save PDF</button> <button class="btn secondary" id="docx">Download Word DOCX</button> <button class="btn secondary" id="html">Download Finished HTML</button> <button class="btn secondary" id="data">Download Saved Answers</button></div><p class="hint">Avoid entering confidential student information while testing on a public GitHub site.</p>`;
+
+return `<p>Page not found.</p>`;
+}
+function items(){let g=[
+["Career / Education Goal",all(S.vision,S.visionOther)],
+["Personal / Social Goal",all(S.personalGoals,S.personalOther)],
+["Career Area",all(S.careerAreas,S.careerAreasOther)],
+["Specific Career",S.careerChoice?[S.careerChoice]:[]],
+["Education & Training",all(S.training,S.trainingOther)],
+["Living",all(S.living,S.livingOther)],
+["Transportation",all(S.transport,S.transportOther)],
+["Money",all(S.money,S.moneyOther)],
+["Independent Living",all(S.independent,S.independentOther)],
+["Support",all(S.supports,S.supportsOther)],
+["Challenge: Career / Education",all(S.visionChallenges,S.visionChallengesOther)],
+["Challenge: Personal / Social",all(S.personalChallenges,S.personalChallengesOther)],
+["Challenge: Strengths & Growth",all(S.strengthChallenges,S.strengthChallengesOther)],
+["Challenge: Career",all(S.careerChallenges,S.careerChallengesOther)],
+["Challenge: Education & Training",all(S.trainingChallenges,S.trainingChallengesOther)],
+["Challenge: Living",all(S.livingChallenges,S.livingChallengesOther)],
+["Challenge: Transportation",all(S.transportChallenges,S.transportChallengesOther)],
+["Challenge: Money",all(S.moneyChallenges,S.moneyChallengesOther)],
+["Challenge: Independent Living",all(S.independentChallenges,S.independentChallengesOther)],
+["Challenge: Support",all(S.supportChallenges,S.supportChallengesOther)]
+],out=[];g.forEach(([c,a])=>a.forEach(t=>{if(t&&t!=="I am not sure yet")out.push({id:c+"::"+t,cat:c,text:t})}));return out}
+function safe(s){let h=2166136261;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)}return "x"+(h>>>0).toString(36)}
+function row(o){let ys=S.timeline[o.id]||[];return `<div class="trow"><div><strong>${esc(o.text)}</strong><small>${esc(o.cat)}</small></div><div class="years">${[1,2,3,4,5].map(y=>`<div class="yb"><input id="${safe(o.id)}${y}" type="checkbox" data-time="${esc(o.id)}" value="${y}" ${ys.includes(y)?"checked":""}><label for="${safe(o.id)}${y}">Yr ${y}</label></div>`).join("")}</div></div>`}
+function cards(){let c=[
+["Career / Education Goals",all(S.vision,S.visionOther)],
+["Personal / Social Goals",all(S.personalGoals,S.personalOther)],
+["Strengths",all(S.strengths,S.strengthsOther)],
+["Areas I Want to Improve",all(S.growth,S.growthOther)],
+["Career Areas",all(S.careerAreas,S.careerAreasOther)],
+["Specific Career",S.careerChoice?[S.careerChoice]:[]],
+["Education & Training",all(S.training,S.trainingOther)],
+["Living & Transportation",[...all(S.living,S.livingOther),...all(S.transport,S.transportOther)]],
+["Independent Living Skills",[...all(S.money,S.moneyOther),...all(S.independent,S.independentOther)]],
+["People or Services That May Support Me",all(S.supports,S.supportsOther)],
+["Challenges: Career / Education",all(S.visionChallenges,S.visionChallengesOther)],
+["Challenges: Personal / Social",all(S.personalChallenges,S.personalChallengesOther)],
+["Challenges: Strengths & Growth",all(S.strengthChallenges,S.strengthChallengesOther)],
+["Challenges: Career & Training",[...all(S.careerChallenges,S.careerChallengesOther),...all(S.trainingChallenges,S.trainingChallengesOther)]],
+["Challenges: Supports & Living",[...all(S.livingChallenges,S.livingChallengesOther),...all(S.transportChallenges,S.transportChallengesOther),...all(S.moneyChallenges,S.moneyChallengesOther),...all(S.independentChallenges,S.independentChallengesOther),...all(S.supportChallenges,S.supportChallengesOther)]]
+];return c.map(([h,a])=>`<div class="rcard"><h4>${esc(h)}</h4><p>${a.length?esc(a.join(", ")):"Nothing selected yet."}</p></div>`).join("")}
+function forYear(y){return items().filter(o=>(S.timeline[o.id]||[]).includes(y))}
+function yearGoals(y){return forYear(y).filter(o=>!o.cat.startsWith("Challenge:"))}
+function yearChallenges(y){return forYear(y).filter(o=>o.cat.startsWith("Challenge:"))}
+function sentenceCount(text){const m=String(text||"").trim().match(/[^.!?]+[.!?]+(?=\s|$)/g);return m?m.length:0}
+function writingStats(text){const chars=String(text||"").trim().length,sentences=sentenceCount(text);return {chars,sentences,valid:chars>=400&&sentences>=5}}
+function allWritingValid(){return S.yearWriting.every(x=>writingStats(x).valid)}
+function updateWritingGate(){
+if(cur!==7){$("#next").disabled=false;return}
+const valid=allWritingValid();$("#next").disabled=!valid;
+$$("[data-write]").forEach(box=>{
+const i=+box.dataset.write,st=writingStats(S.yearWriting[i]),count=document.querySelector(`[data-count="${i}"]`),msg=document.querySelector(`[data-message="${i}"]`);
+if(count)count.textContent=`${st.chars} / 400 characters — ${st.sentences} / 5 sentences`;
+const needChars=Math.max(0,400-st.chars),needSent=Math.max(0,5-st.sentences);
+if(msg){if(st.valid){msg.textContent="This paragraph meets both requirements.";msg.classList.add("ok")}else{const parts=[];if(needChars)parts.push(`${needChars} more character${needChars===1?"":"s"}`);if(needSent)parts.push(`${needSent} more sentence${needSent===1?"":"s"}`);msg.textContent="Please add "+parts.join(" and ")+ ".";msg.classList.remove("ok")}}
+box.classList.toggle("valid",st.valid);box.classList.toggle("invalid",!st.valid)
+})
+}
+function summary(){return `<div class="review">${[1,2,3,4,5].map(y=>`<div class="rcard"><h4>Year ${y}</h4><p>${forYear(y).map(x=>esc(x.text)).join(", ")||"No items assigned yet."}</p></div>`).join("")}</div>`}
+function yearPlan(y){
+let a=yearGoals(y),ch=yearChallenges(y);
+const groups=[
+["Start Your Paragraph",["This year I plan to...","One of my goals this year is...","I hope to...","My first step will be...","I want to begin by..."]],
+["Explain Your Goal",["This is important to me because...","I chose this goal because...","I want to improve...","I think this will help me...","I can prepare by..."]],
+["Talk About Support",["Someone who can help me is...","I may need help from...","I can ask...","If I have trouble...","I will work with..."]],
+["Finish Your Paragraph",["By the end of this year...","I will know I was successful when...","My next step will be...","I hope I accomplish...","After this, I will..."]]
+];
+const guide=`<details class="guide"><summary>Need Help Getting Started? Sentence Starters</summary><div class="guide-body"><div class="thinking"><strong>Think about:</strong> What do you want to accomplish? Why does it matter? Who can help? What will success look like?</div><div class="guide-grid">${groups.map(([title,list])=>`<div class="guide-group"><h4>${title}</h4>${list.map(s=>`<div class="starter"><span>${s}</span><button type="button" class="chip" data-starter="${y-1}" data-text="${esc(s)}">Insert</button></div>`).join("")}</div>`).join("")}</div></div></details>`;
+return `<div class="yplan"><h3>Year ${y} — ${Number(S.gradYear||new Date().getFullYear())+y-1}</h3><p class="hint">Ideas you selected:</p><div class="keys">${a.length?a.map(x=>`<span class="key">${esc(x.text)}</span>`).join(""):'<span class="hint">No ideas assigned yet.</span>'}</div><p class="hint"><strong>Challenges I May Face:</strong></p><div class="keys">${ch.length?ch.map(x=>`<span class="key challenge-key">${esc(x.text)}</span>`).join(""):'<span class="hint">No challenges assigned to this year.</span>'}</div>${guide}<label><strong>Using the information above, explain your plan for this year in your own words.</strong></label><textarea class="plantext" data-write="${y-1}" placeholder="In Year ${y}, I plan to...">${esc(S.yearWriting[y-1])}</textarea><div class="writing-status"><span class="writing-count" data-count="${y-1}">0 / 400 characters — 0 / 5 sentences</span><span class="writing-message" data-message="${y-1}">Please add 400 more characters and 5 more sentences.</span></div></div>`
+}
+function upload(k,l){return `<div class="upload"><strong>${esc(l)}</strong><input type="file" accept="image/*" data-image="${k}">${S.images[k]?`<img src="${S.images[k]}" alt="${esc(l)}"><button type="button" class="chip" data-remove="${k}">Remove</button>`:""}</div>`}
+function bind(){$$("[data-step]").forEach(b=>b.onclick=()=>{const target=+b.dataset.step;if(target===8&&!allWritingValid()){flash("Complete all five My Plan paragraphs before continuing.");cur=7;save();render();return}cur=target;save();render()});$$("[data-field]").forEach(x=>x.oninput=()=>{S[x.dataset.field]=x.value;save()});$$("[data-array]").forEach(x=>x.onchange=()=>{let p=x.dataset.array,v=$$(`[data-array="${CSS.escape(p)}"]:checked`).map(z=>z.value);if(p==="strengths"&&v.length>5){x.checked=false;flash("Please choose no more than five strengths.");v=$$(`[data-array="${CSS.escape(p)}"]:checked`).map(z=>z.value)}S[p]=v;save()});$$("[data-fill]").forEach(b=>b.onclick=()=>{S[b.dataset.fill]=b.dataset.text;save();render()});$$("[data-time]").forEach(x=>x.onchange=()=>{let id=x.dataset.time;S.timeline[id]=$$(`[data-time="${CSS.escape(id)}"]:checked`).map(z=>+z.value);save()});$$("[data-write]").forEach(x=>x.oninput=()=>{S.yearWriting[+x.dataset.write]=x.value;save();updateWritingGate()});
+$$("[data-starter]").forEach(b=>b.onclick=()=>{const i=+b.dataset.starter;const starter=b.dataset.text;const existing=(S.yearWriting[i]||"").trimEnd();S.yearWriting[i]=existing?existing+"\n\n"+starter:starter;save();render();setTimeout(()=>{const box=document.querySelector(`[data-write="${i}"]`);if(box){box.focus();box.selectionStart=box.selectionEnd=box.value.length}},0)});$$('input[name="theme"]').forEach(x=>x.onchange=()=>{S.theme=x.value;save();render()});$$('input[name="dec"]').forEach(x=>x.onchange=()=>{S.decoration=x.value;save()});$$("[data-image]").forEach(x=>x.onchange=e=>{let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{S.images[x.dataset.image]=r.result;save();render()};r.readAsDataURL(f)});$$("[data-remove]").forEach(b=>b.onclick=()=>{S.images[b.dataset.remove]="";save();render()});if($("#startHome"))$("#startHome").onclick=()=>{cur=1;save();render()};if($("#print"))$("#print").onclick=printPlan;if($("#docx"))$("#docx").onclick=downloadDocx;if($("#html"))$("#html").onclick=downloadPlan;if($("#data"))$("#data").onclick=()=>blob(JSON.stringify(S,null,2),"application/json",base()+"_saved_answers.json");updateWritingGate()}
+$("#back").onclick=()=>{if(cur>0){cur--;save();render()}};$("#next").onclick=()=>{if(cur===7&&!allWritingValid()){flash("Each year needs at least 400 characters and 5 sentences.");updateWritingGate();return}if(cur<steps.length-1){cur++;save();render()}else flash("Your progress is saved.")};$("#reset").onclick=()=>{if(confirm("Clear all answers and start over?")){S=structuredClone(D);cur=0;localStorage.removeItem(STORE);render()}};
+function themeHex(){
+const colors={orange:"E87524",blue:"2563B5",green:"2F7C4B",purple:"7653B5"};
+return colors[S.theme]||colors.orange
+}
+function themeCss(){return "#"+themeHex()}
+function deco(){return S.decoration==="stars"?"★ ✦ ★":S.decoration==="path"?"● ─── ● ─── ●":S.decoration==="confetti"?"◆ ● ▲ ✦ ◆":"—"}function img(k){return S.images[k]?`<img src="${S.images[k]}" style="max-width:220px;max-height:180px;border-radius:14px">`:""}
+function finished(){
+const c=themeCss();
+return `<section class="print-page" style="text-align:center;display:flex;flex-direction:column;justify-content:center;align-items:center"><h1 style="font-size:42px;margin-bottom:18px;color:${c}">My Five-Year Plan</h1><h2 style="font-size:31px;margin:8px 0;color:${c}">${esc(S.studentName||"Student Name")}</h2><p style="font-size:20px">Expected graduation year: ${esc(S.gradYear)}</p>${img("headshot")}</section>
+<section class="print-page"><h1 style="font-size:36px;color:${c}">My Personal Goals</h1><p style="font-size:22px;line-height:1.7">${esc(all(S.personalGoals,S.personalOther).join(" • ")||"Not selected")}</p><h2 style="color:${c}">Why These Goals Matter to Me</h2><p style="white-space:pre-wrap;line-height:1.65">${esc(S.personalWhy||"Not written yet.")}</p></section>
+<section class="print-page"><h1 style="color:${c}">My Strengths & Growth</h1><h2 style="color:${c}">My Strengths</h2><p>${esc(all(S.strengths,S.strengthsOther).join(" • ")||"Not selected")}</p><h2 style="color:${c}">Areas I Want to Improve</h2><p>${esc(all(S.growth,S.growthOther).join(" • ")||"Not selected")}</p><h2 style="color:${c}">Career / Education Goals</h2><p>${esc(all(S.vision,S.visionOther).join(" • ")||"Not selected")}</p></section>
+<section class="print-page"><h1 style="color:${c}">Career & Training</h1>${img("career")}<h2 style="color:${c}">Career Areas</h2><p>${esc(all(S.careerAreas,S.careerAreasOther).join(" • ")||"Not selected")}</p><h2 style="color:${c}">Specific Job or Career</h2><p>${esc(S.careerChoice||"Not selected")}</p><h2 style="color:${c}">Education or Training</h2><p>${esc(all(S.training,S.trainingOther).join(" • ")||"Not selected")}</p></section>
+${[1,2,3,4,5].map(y=>`<section class="print-page"><h1 style="color:${c}">Year ${y} — ${Number(S.gradYear||new Date().getFullYear())+y-1}</h1>${img("year"+y)}<h2 style="color:${c}">My Ideas</h2><p>${esc(yearGoals(y).map(x=>x.text).join(" • ")||"No ideas assigned.")}</p><h2 style="color:#B36B00">Challenges I May Face</h2><p style="color:#8A5600">${esc(yearChallenges(y).map(x=>x.text).join(" • ")||"No challenges assigned.")}</p><h2 style="color:${c}">My Plan</h2><p style="white-space:pre-wrap;line-height:1.65">${esc(S.yearWriting[y-1]||"Not written yet.")}</p></section>`).join("")}`
+}
+function printPlan(){let w=open("","_blank");w.document.write(`<!doctype html><html><head><title>Five-Year Plan</title><style>${document.querySelector("style").textContent}body{background:white;font-size:18px;line-height:1.6}.print-page{max-width:8.5in;margin:auto;padding:.55in}h1{color:var(--a);font-size:34px}h2{font-size:25px}p{font-size:18px;line-height:1.65}</style></head><body class="${S.theme}" style="--a:${themeCss()}">${finished()}<script>onload=()=>print()<\/script></body></html>`);w.document.close()}
+function downloadPlan(){let c=`<!doctype html><html><head><meta charset="utf-8"><title>${esc(S.studentName)} Five-Year Plan</title><style>${document.querySelector("style").textContent}body{background:#eef2f7;font-size:18px;line-height:1.6}.print-page{max-width:8.5in;margin:20px auto;background:white;padding:.55in}h1{font-size:34px}h2{font-size:25px}p{font-size:18px;line-height:1.65}</style></head><body class="${S.theme}" style="--a:${themeCss()}"><div class="no-print" style="position:sticky;top:0;background:#172437;padding:12px;text-align:center"><button onclick="print()">Print / Save PDF</button></div>${finished()}</body></html>`;blob(c,"text/html",base()+"_five_year_plan.html")}
+
+async function dataUriToBytes(uri){
+if(!uri)return null;
+const response=await fetch(uri);
+return new Uint8Array(await response.arrayBuffer())
+}
+async function downloadDocx(){
+if(!window.docx){flash("The Word exporter could not load. Check your internet connection and try again.");return}
+const {Document,Packer,Paragraph,TextRun,HeadingLevel,AlignmentType,ImageRun,PageBreak}=window.docx;
+const color=themeHex();
+const children=[];
+const addHeading=(text,level=HeadingLevel.HEADING_1,center=false)=>children.push(new Paragraph({heading:level,alignment:center?AlignmentType.CENTER:AlignmentType.LEFT,children:[new TextRun({text,bold:true,color})]}));
+const addText=(text,center=false)=>children.push(new Paragraph({alignment:center?AlignmentType.CENTER:AlignmentType.LEFT,spacing:{after:180},children:[new TextRun({text:String(text||"")})]}));
+const addList=(values)=>addText((values&&values.length)?values.join(" • "):"Not selected");
+const addImage=async(key,width=220,height=165)=>{
+if(!S.images[key])return;
+try{
+const data=await dataUriToBytes(S.images[key]);
+children.push(new Paragraph({alignment:AlignmentType.CENTER,children:[new ImageRun({data,transformation:{width,height}})]}))
+}catch(e){}
+};
+addHeading("My Five-Year Plan",HeadingLevel.TITLE,true);
+addHeading(S.studentName||"Student Name",HeadingLevel.HEADING_1,true);
+addText("Expected graduation year: "+(S.gradYear||""),true);
+await addImage("headshot",220,180);
+children.push(new Paragraph({children:[new PageBreak()]}));
+
+addHeading("My Personal Goals");
+addList(all(S.personalGoals,S.personalOther));
+addHeading("Why These Goals Matter to Me",HeadingLevel.HEADING_2);
+addText(S.personalWhy||"Not written yet.");
+children.push(new Paragraph({children:[new PageBreak()]}));
+
+addHeading("My Strengths & Growth");
+addHeading("My Strengths",HeadingLevel.HEADING_2);
+addList(all(S.strengths,S.strengthsOther));
+addHeading("Areas I Want to Improve",HeadingLevel.HEADING_2);
+addList(all(S.growth,S.growthOther));
+addHeading("Career / Education Goals",HeadingLevel.HEADING_2);
+addList(all(S.vision,S.visionOther));
+children.push(new Paragraph({children:[new PageBreak()]}));
+
+addHeading("Career & Training");
+await addImage("career",220,165);
+addHeading("Career Areas",HeadingLevel.HEADING_2);
+addList(all(S.careerAreas,S.careerAreasOther));
+addHeading("Specific Job or Career",HeadingLevel.HEADING_2);
+addText(S.careerChoice||"Not selected");
+addHeading("Education or Training",HeadingLevel.HEADING_2);
+addList(all(S.training,S.trainingOther));
+
+for(let y=1;y<=5;y++){
+children.push(new Paragraph({children:[new PageBreak()]}));
+addHeading(`Year ${y} — ${Number(S.gradYear||new Date().getFullYear())+y-1}`);
+await addImage("year"+y,220,165);
+addHeading("My Ideas",HeadingLevel.HEADING_2);
+addList(yearGoals(y).map(x=>x.text));
+addHeading("Challenges I May Face",HeadingLevel.HEADING_2);
+addList(yearChallenges(y).map(x=>x.text));
+addHeading("My Plan",HeadingLevel.HEADING_2);
+addText(S.yearWriting[y-1]||"Not written yet.")
+}
+const doc=new Document({
+styles:{default:{document:{run:{font:"Aptos",size:28}}},paragraphStyles:[
+{id:"Title",name:"Title",basedOn:"Normal",next:"Normal",run:{size:64,bold:true,color},paragraph:{spacing:{after:240}}},
+{id:"Heading1",name:"Heading 1",basedOn:"Normal",next:"Normal",quickFormat:true,run:{size:42,bold:true,color},paragraph:{spacing:{before:240,after:120}}},
+{id:"Heading2",name:"Heading 2",basedOn:"Normal",next:"Normal",quickFormat:true,run:{size:34,bold:true,color},paragraph:{spacing:{before:180,after:80}}}
+]},
+sections:[{properties:{page:{margin:{top:720,right:720,bottom:720,left:720}}},children}]
+});
+const out=await Packer.toBlob(doc);
+const a=document.createElement("a");
+a.href=URL.createObjectURL(out);
+a.download=base()+"_five_year_plan.docx";
+a.click();
+setTimeout(()=>URL.revokeObjectURL(a.href),1500)
+}
+function blob(c,t,n){let a=document.createElement("a");a.href=URL.createObjectURL(new Blob([c],{type:t}));a.download=n;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}function base(){return(S.studentName||"student").replace(/[^a-z0-9]+/gi,"_")}render();
+</script></body></html>
